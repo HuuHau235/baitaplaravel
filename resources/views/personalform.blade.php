@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="" method="POST">
+    <form action="/personalformkq" method="POST">
         @csrf
         <h2>Personal</h2>
         <div class="form-group">
@@ -53,6 +53,16 @@
             @endif
         </div>
     </form>
+    @if ($errors->any())
+    <div class="errors">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 </body>
 
 </html>
