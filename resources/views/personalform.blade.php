@@ -43,13 +43,15 @@
 
         {{-- Hiển thị --}}
         <div class="result">
-            @if(isset($personal))
-                <p>Name: {{$personal['name']}}</p>
-                <p>Age: {{$personal['age']}}</p>
-                <p>Date: {{$personal['date']}}</p>
-                <p>Phone: {{$personal['phone']}}</p>
-                <p>Website: {{$personal['web']}}</p>
-                <p>Address: {{$personal['address']}}</p>
+            @if(isset($userSession))
+                @foreach ($userSession as $user)  
+                    <p>Name: {{$user['name']}}</p>
+                    <p>Age: {{$user['age']}}</p>
+                    <p>Date: {{$user['date']}}</p>
+                    <p>Phone: {{$user['phone']}}</p>
+                    <p>Website: {{$user['web']}}</p>
+                    <p>Address: {{$user['address']}}</p>
+                @endforeach
             @endif
         </div>
     </form>

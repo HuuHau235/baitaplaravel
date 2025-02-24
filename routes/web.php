@@ -22,18 +22,28 @@
 
 // Route::get('/', [\App\Http\Controllers\PostController::class, 'create']);
 
-use App\Http\Controllers\personalController;
+// use App\Http\Controllers\personalController;
+// use Illuminate\Support\Facades\Route;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/personalform', [personalController::class, 'index']);
+
+// Route::post('/personalformkq', [personalController::class, 'display']);
+
+// use App\Http\Controllers\CovidController;
+
+// Route::get('/covid-summary', [CovidController::class, 'index']);
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DisplayController;
+use App\Http\Controllers\CovidController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/personalform', [personalController::class, 'index']);
-
-Route::post('/personalformkq', [personalController::class, 'display']);
-
-
+Route::get('/student', [DisplayController::class, 'showForm']);
+Route::post('/student', [DisplayController::class, 'display']);
+Route::get('/welcome', [CovidController::class, 'getData']);
 
 
 

@@ -11,28 +11,19 @@ class personalController extends Controller
     }
     public function display(Request $request)
 {
-    // Validate dữ liệu
-    $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'age' => 'nullable|numeric',
-        'date' => 'nullable|string',
-        'phone' => 'nullable|numeric',
-        'web' => 'nullable|url',
-        'address' => 'nullable|string',
-    ]);
-
-    // Gán dữ liệu vào mảng `$personal`
-    $personal = [
-        'name' => $validated['name'],
-        'age' => $validated['age'] ?? null,
-        'date' => $validated['date'] ?? null,
-        'phone' => $validated['phone'] ?? null,
-        'web' => $validated['web'] ?? null,
-        'address' => $validated['address'] ?? null,
-    ];
-
+    $userSession = session('userSession',[]);
+        $user = [
+            'name'    => $request->input('name'),
+            'age'     => $request->input('age'),
+            'date'    => $request->input('date'),
+            'phone'   => $request->input('phone'),
+            'web'     => $request->input('web'),
+            'address' => $request->input('address')
+        ];
+        $userSession[] = $user;
+        session(['userSession'=> $userSession]);
+        return view('personalform')->with('userSession',$userSession);
     // Trả về view với kết quả
-    return view('personalform')->with('personal', $personal);
 }
 
 }
